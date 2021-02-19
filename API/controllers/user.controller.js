@@ -4,6 +4,15 @@ const config = require("../config");
 const jwt = require("jsonwebtoken");
 const md = require("../middleware");
 
+exports.findAllUsers = (req, res) => {
+    User.find({}, (err, result) => {
+        if (err) res.status(500).json({ msg: err });
+        res.json({
+            data: result,
+        });
+    });
+}
+
 
 exports.findUser = (req, res) => {
     User.findOne({ username: req.params.username }, (err, result) => {

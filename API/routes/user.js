@@ -9,6 +9,8 @@ const router = express.Router();
 const userController = require('../controllers/user.controller')
 
 
+router.get("/getUsers", userController.findAllUsers);
+
 router.get("/:username", md.checkToken, userController.findUser);
 
 
@@ -21,7 +23,7 @@ router.post("/login", userController.logIn);
 router.post('/register', userController.signup);
 
 
-router.patch("/update/:username", md.checkToken, userController.updatePassword);
+router.put("/update/:username", md.checkToken, userController.updatePassword);
 
 
 router.delete("/delete/:username", md.checkToken, userController.deleteUser);

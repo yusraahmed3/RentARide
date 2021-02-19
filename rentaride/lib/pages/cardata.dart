@@ -1,75 +1,43 @@
-// import 'package:flutter/cupertino.dart';
+// import 'package:equatable/equatable.dart';
+// import 'package:json_annotation/json_annotation.dart';
+// import 'package:flutter/material.dart';
 //
-// class NavigationItem {
+// import 'package:rentaride/NetworkHandler.dart';
 //
-//   IconData iconData;
 //
-//   NavigationItem(this.iconData);
+//
+//
+// @immutable
+// class CarModel  extends Equatable{
+//
+//   final String brand;
+//   final String model;
+//   final double price;
+//   final String rentperiod;
+//   final String image;
+//
+//   CarModel({@required this.brand, @required this.model, @required this.price, @required this.rentperiod, @required this.image});
+//
+//   @override
+//   // TODO: implement props
+//   List<Object> get props => [brand, model, price, rentperiod, image];
+//
+//   factory CarModel.fromJson(Map<String, dynamic> json){
+//     return CarModel(
+//       brand: json['brand'],
+//       model: json['model'],
+//       price: json['price'],
+//       rentperiod: json['rentperiod'],
+//       image: json['image'],
+//     );
+//   }
+//
 //
 // }
 //
 //
 //
 //
-// class Car {
-//
-//   String brand;
-//   String model;
-//   double price;
-//   String condition;
-//   List<String> images;
-//
-//   Car(this.brand, this.model, this.price, this.condition, this.images);
-//
-// }
 //
 //
-//   return <Car>[
-//     Car(
-//       "Land Rover",
-//       "Discovery",
-//       2580,
-//       "Weekly",
-//       [
-//         "assets/land_rover_0.png",
-//       ],
-//     ),
-//     Car(
-//       "Nissan",
-//       "GTR",
-//       1100,
-//       "Daily",
-//       [
-//         "assets/nissan_gtr_0.png",
-//         "assets//nissan_gtr_1.png",
-//       ],
-//     ),
-//     Car(
-//       "Acura",
-//       "MDX 2020",
-//       2200,
-//       "Monthly",
-//       [
-//         "assets/acura_0.png",
-//       ],
-//     ),
-//     Car(
-//       "Chevrolet",
-//       "Camaro",
-//       3400,
-//       "Weekly",
-//       [
-//         "assets/camaro_0.png",
-//       ],
-//     ),
-//     Car(
-//       "Ford",
-//       "Focus",
-//       2300,
-//       "Weekly",
-//       [
-//         "assets/ford_0.png",
-//       ],
-//     ),
-//   ];
-// }
+//

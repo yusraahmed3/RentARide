@@ -51,7 +51,7 @@ exports.logIn = (req, res) => {
                 msg: "success",
             });
         } else {
-            res.status(403).json("password is incorrect");
+            res.status(403).send("password is incorrect");
         }
     });
 }
@@ -88,12 +88,13 @@ exports.signup = (req, res) => {
         username: req.body.username,
         password: req.body.password,
         email: req.body.email,
+        isAdmin: req.body.isAdmin,
     });
     user
         .save()
         .then(() => {
             console.log("user registered");
-            res.status(200).json("ok");
+            res.status(200).json(user);
         })
         .catch((err) => {
             res.status(403).json({ msg: err });

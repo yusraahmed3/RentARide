@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:carental/user/model/user.dart';
+import 'package:carental/models/models.dart';
 
 
 abstract class UserEvent extends Equatable {

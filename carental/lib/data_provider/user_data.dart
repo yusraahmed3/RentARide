@@ -4,11 +4,11 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart' as http;
 import 'package:meta/meta.dart';
 import 'package:logger/logger.dart';
-import 'package:carental/user/model/user.dart';
+import 'package:carental/models/models.dart';
 
 class UserDataProvider {
   var log = Logger();
-  final _baseUrl = "http://10.0.2.2:5000";
+  final _baseUrl = "http://10.6.198.36:5000";
   final http.Client httpClient;
   final storage = new FlutterSecureStorage();
 

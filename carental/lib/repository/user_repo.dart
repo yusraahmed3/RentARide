@@ -1,6 +1,7 @@
 import 'package:meta/meta.dart';
-import 'package:carental/user/data_provider/user_data.dart';
-import 'package:carental/user/model/user.dart';
+import 'package:carental/repository/repository.dart';
+import  'package:carental/data_provider/data_provider.dart';
+import 'package:carental/models/models.dart';
 
 class UserRepo {
   final UserDataProvider dataProvider;

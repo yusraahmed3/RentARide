@@ -1,5 +1,5 @@
 import 'package:equatable/equatable.dart';
-import 'package:carental/car/car.dart';
+import 'package:carental/models/models.dart';
 
 class CarState extends Equatable {
   const CarState();

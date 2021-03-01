@@ -1,9 +1,8 @@
-
-import 'package:carental/car/bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:carental/user/screens/SignUp.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:carental/user/screens/user_route.dart';
+import 'package:carental/screens/screens.dart';
+import 'package:carental/bloc/bloc.dart';
+import 'package:carental/models/models.dart';
 
 class Welcome extends StatefulWidget {
  static const routeName='/';
@@ -24,6 +23,7 @@ class _WelcomeState extends State<Welcome> {
 //   String errText;
 //   bool validate = false;
   bool circular = false;
+  final UserEvent loginevent = UserLogIn(User(username: "yusra45", password: "12345678"));
 
 //
   @override
@@ -43,14 +43,16 @@ class _WelcomeState extends State<Welcome> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                'Rent-A-Ride',
-                style: (TextStyle(
-                  color: Colors.indigo[700],
-                  fontSize: 30,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 2,
-                )),
+              Expanded(
+                child: Text(
+                  'Rent-A-Ride',
+                  style: (TextStyle(
+                    color: Colors.indigo[700],
+                    fontSize: 30,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 2,
+                  )),
+                ),
               ),
               SizedBox(height: 65.0,),
               Text(

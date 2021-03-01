@@ -1,5 +1,7 @@
 import 'package:meta/meta.dart';
-import 'package:carental/car/car.dart';
+import 'package:carental/data_provider/data_provider.dart';
+import 'package:carental/models/models.dart';
+import 'package:carental/repository/repository.dart';
 
 class CarRepository {
   final CarDataProvider dataProvider;

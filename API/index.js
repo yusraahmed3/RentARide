@@ -16,10 +16,13 @@ connection.once("open", () => {
 app.use(express.json());
 const userRoute = require("./routes/user");
 const carRoute = require("./routes/car");
+const rentalRoute = require("./routes/rented");
 
 app.use("/user", userRoute);
 
 app.use("/car", carRoute);
+
+app.use("/rentcar", rentalRoute);
 
 //const port = process.env.port || 5000;
 

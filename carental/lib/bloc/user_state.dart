@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:carental/models/models.dart';
 
 
 class UserState extends Equatable {
@@ -11,11 +12,10 @@ class UserState extends Equatable {
 }
 
 class AdminLoadSuccess extends UserState{
-  String text = 'Admin Load';
-
-  AdminLoadSuccess({this.text});
+final User user;
+  AdminLoadSuccess({this.user});
   @override
-  List<Object> get props => [text];
+  List<Object> get props => [user];
 }
 
 class UserLoading extends UserState {}

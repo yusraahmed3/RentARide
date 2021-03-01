@@ -9,7 +9,7 @@ class UserBloc extends Bloc<UserEvent, UserState>{
 
   @override
   Stream<UserState> mapEventToState(UserEvent event) async* {
-    if(event is UserLoggedOut){
+    if(event is StartEvent){
       try{
         yield UserLoading();
       }
@@ -19,9 +19,13 @@ class UserBloc extends Bloc<UserEvent, UserState>{
     }
     if(event is UserLogIn){
       try{
-        await userRepo.loginUser(event.user);
-        yield UserLoadSuccess();
-      }catch(e){
+        final user = await userRepo.loginUser(event.user);
+        print('$user user');
+        if(user.isAdmin){
+          yield AdminLoadSuccess();
+        }else {
+          yield UserLoadSuccess();
+        }}catch(e){
         yield UserOperationFailure();
       }
     }

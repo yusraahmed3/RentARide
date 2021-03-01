@@ -6,7 +6,7 @@ abstract class UserEvent extends Equatable {
   const UserEvent();
 }
 
-class UserLoggedOut extends UserEvent{
+class StartEvent extends UserEvent{
   @override
 
   List<Object> get props => [];

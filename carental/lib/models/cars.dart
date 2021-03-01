@@ -9,14 +9,14 @@ import 'package:flutter/material.dart';
 
 @immutable
 class CarModel  extends Equatable{
-
+  int id;
   final String brand;
   final String model;
   final int price;
   final String period;
   // final String image;
 
-  CarModel({
+  CarModel({@required id,
     @required this.brand,
     @required this.model,
     @required this.price, @required this.period});
@@ -26,6 +26,7 @@ class CarModel  extends Equatable{
 
   factory CarModel.fromJson(Map<String, dynamic> json){
     return CarModel(
+      id: json['id'],
       brand: json['brand'],
       model: json['model'],
       price: json['price'],

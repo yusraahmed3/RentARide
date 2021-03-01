@@ -22,9 +22,19 @@ class UserDataProvider {
   // }
 
 Future<User> LogIn(User user) async {
-    
-  final response = await http.post(formater("/user/login"),
-      headers: {"Content-type": "application/json",},body: user);
+  print(user.username);
+  final response = await http.post(formater('user/login'),
+      headers: <String, String>{"Content-type": "application/json"},
+      body: jsonEncode(({'username': user.username, 'password': user.password})));
+  print("Print");
+  if(response.statusCode == 200){
+    print("Ok");
+    return User(username: "test");
+  }else{
+    print(user.username);
+    print(response.statusCode);
+    print("No");
+  }
   log.d(user);
 }
 

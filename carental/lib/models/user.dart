@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 @immutable
 class User extends Equatable {
 
-  User({ this.id, @required this.username, @required this.email, @required this.password});
+  User({ this.id, this.username, this.email,  this.password, this.isAdmin});
 
-  final String id;
+  final int id;
   final String username;
   final String email;
   final String password;
+  final bool isAdmin;
 
   @override
-  List<Object> get props => [id, username, email, password];
+  List<Object> get props => [id, username, email, password, isAdmin];
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(

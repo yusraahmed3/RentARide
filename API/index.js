@@ -28,4 +28,4 @@ app.use("/rentcar", rentalRoute);
 
 app.route("/").get((req, res) => res.json("hello world"));
 
-app.listen(5000, () => console.log('listening on port 5000'));
+app.listen(5000, '10.6.198.36' || 'localhost', () => console.log('listening on port 5000'));

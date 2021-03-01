@@ -4,7 +4,11 @@ import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 
 class CarDataProvider {
+<<<<<<< HEAD:carental/lib/data_provider/car_data.dart
+  final _baseUrl = "http://10.6.198.36:5000";
+=======
   final _baseUrl = "http://10.2.2.2:5000";
+>>>>>>> ab8f701ebcd2b2a2dd59c7963b2e6ae205f3bd96:carental/lib/car/data_provider/car_data.dart
 
 
   Future<CarModel> addCar(CarModel car) async{

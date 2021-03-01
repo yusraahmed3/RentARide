@@ -8,7 +8,12 @@ import 'package:carental/models/models.dart';
 
 class UserDataProvider {
   var log = Logger();
+<<<<<<< HEAD:carental/lib/data_provider/user_data.dart
+  final _baseUrl = "http://10.6.198.36:5000";
+  final http.Client httpClient;
+=======
   final _baseUrl = "http://10.2.2.2:5000";
+>>>>>>> ab8f701ebcd2b2a2dd59c7963b2e6ae205f3bd96:carental/lib/user/data_provider/user_data.dart
   final storage = new FlutterSecureStorage();
 
   

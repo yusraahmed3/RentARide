@@ -23,6 +23,9 @@ class _WelcomeState extends State<Welcome> {
 //   String errText;
 //   bool validate = false;
   bool circular = false;
+<<<<<<< HEAD:carental/lib/screens/user screens/Welcome.dart
+  final UserEvent loginevent = UserLogIn(User(username: "yusra45", password: "12345678"));
+=======
   _login(ctx) async {
     setState(() {
 
@@ -33,6 +36,7 @@ class _WelcomeState extends State<Welcome> {
   }
 
 
+>>>>>>> ab8f701ebcd2b2a2dd59c7963b2e6ae205f3bd96:carental/lib/user/screens/Welcome.dart
 
 //
   @override
@@ -65,6 +69,45 @@ class _WelcomeState extends State<Welcome> {
               tileMode: TileMode.repeated,
             ),
           ),
+<<<<<<< HEAD:carental/lib/screens/user screens/Welcome.dart
+        ),
+        child: Form(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Expanded(
+                child: Text(
+                  'Rent-A-Ride',
+                  style: (TextStyle(
+                    color: Colors.indigo[700],
+                    fontSize: 30,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 2,
+                  )),
+                ),
+              ),
+              SizedBox(height: 65.0,),
+              Text(
+                'Great cars for great people.',
+                textAlign: TextAlign.center,
+                style: (TextStyle(
+                  color: Colors.indigo[700],
+                  fontSize: 27,
+                  fontWeight: FontWeight.w500,
+                  letterSpacing: 2,
+                )),
+              ),
+              SizedBox(height: 25.0),
+              usernameTextField(),
+              passwordTextField(),
+              SizedBox(height: 10,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Text(
+                    'Forgot Password?',
+                    style: TextStyle(
+=======
           child: Form(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -134,6 +177,7 @@ class _WelcomeState extends State<Welcome> {
                     height: 50,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
+>>>>>>> ab8f701ebcd2b2a2dd59c7963b2e6ae205f3bd96:carental/lib/user/screens/Welcome.dart
                       color: Colors.blue,
                     ),
                     child: Center(

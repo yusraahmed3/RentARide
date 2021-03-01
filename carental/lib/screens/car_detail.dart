@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:carental/car/car.dart';
-import 'package:carental/car/screens/car_add_update.dart';
+import 'package:carental/screens/screens.dart';
+import 'package:carental/models/models.dart';
+import 'package:carental/bloc/bloc.dart';
 
 class CarDetail extends StatelessWidget{
   static const routeName='courseDetail';

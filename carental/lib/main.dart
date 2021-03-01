@@ -1,26 +1,21 @@
-//
-// import 'package:carental/user/bloc/bloc.dart';
-// import 'package:carental/user/bloc/user_event.dart';
-// import 'package:carental/user/data_provider/user_data.dart';
-// import 'package:carental/user/model/user.dart';
-import 'package:carental/user/bloc/bloc.dart';
-import 'package:carental/user/bloc/user_event.dart';
-import 'package:carental/user/repository/user_repo.dart';
-import 'package:carental/user/screens/Welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:carental/car/car.dart';
 import 'bloc_observer.dart';
+import 'package:http/http.dart' as http;
+import 'package:carental/car.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
+
+  final UserRepo userRepo = UserRepo(dataProvider: UserDataProvider());
+
   final CarRepository carRepository = CarRepository(
       dataProvider: CarDataProvider()
   );
 
   runApp(
 
-    RentARide(carRepository: carRepository,),
+    RentARide(carRepository: carRepository, userRepo: userRepo,),
 
   );
 
@@ -28,16 +23,38 @@ void main() {
 
 class RentARide extends StatelessWidget {
   final CarRepository carRepository;
+  final UserRepo userRepo;
 
-  RentARide({@required this.carRepository}) : assert(carRepository != null);
+  RentARide({@required this.carRepository, @required this.userRepo})
+      : assert(carRepository != null);
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Welcome()
-    );
+    return MultiRepositoryProvider(
+        providers: [
+          RepositoryProvider.value(value: this.userRepo),
+          RepositoryProvider.value(value: this.carRepository),
+        ],
+        child: MultiBlocProvider(
+          providers: [
+            BlocProvider(
+            create: (context) => UserBloc(userRepo: this.userRepo)),
+    BlocProvider(
+    create: (context) => CarBloc(carsRepository: this.carRepository)),
+          ],
+    child: MaterialApp(
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            visualDensity: VisualDensity.adaptivePlatformDensity,
+          ),
+          onGenerateRoute: UserRoute.generateRoute,
+        )));
   }
-}
+//     return MaterialApp(
+//         home: Welcome()
+//     );
+//   }
+// }
 //     return Welcome RepositoryProvider.value(
 //       value: this.carRepository,
 //       child: BlocProvider(
@@ -55,4 +72,4 @@ class RentARide extends StatelessWidget {
 //       ),
 //     );
 //   }
-// }
+}

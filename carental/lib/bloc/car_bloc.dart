@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:carental/car/bloc/bloc.dart';
-import 'package:carental/car/car.dart';
+import 'package:carental/bloc/user_bloc.dart';
+import 'package:carental/repository/repository.dart';
+import 'package:carental/bloc/bloc.dart';
 
 class CarBloc extends Bloc<CarEvent, CarState>{
   final CarRepository carsRepository;

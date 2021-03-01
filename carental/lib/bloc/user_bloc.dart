@@ -1,8 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:carental/user/bloc/user_event.dart';
-import 'package:carental/user/repository/user_repo.dart';
-
-import 'package:carental/user/bloc/user_state.dart';
+import 'package:carental/bloc/user_event.dart';
+import 'package:carental/bloc/bloc.dart';
+import 'package:carental/repository/repository.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState>{
   UserRepo userRepo;

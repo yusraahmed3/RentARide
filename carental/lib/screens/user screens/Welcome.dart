@@ -1,9 +1,8 @@
-
-import 'package:carental/car/bloc/bloc.dart';
 import 'package:flutter/material.dart';
-import 'package:carental/user/screens/SignUp.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:carental/user/screens/user_route.dart';
+import 'package:carental/screens/screens.dart';
+import 'package:carental/bloc/bloc.dart';
+import 'package:carental/models/models.dart';
 
 class Welcome extends StatefulWidget {
  static const routeName='/';
@@ -24,108 +23,136 @@ class _WelcomeState extends State<Welcome> {
 //   String errText;
 //   bool validate = false;
   bool circular = false;
+  _login(ctx) async {
+    setState(() {
+
+    });
+    final UserEvent loginevent = UserLogIn(User(username: _usernameController.text, password: _passController.text));
+    BlocProvider.of<UserBloc>(ctx).add(loginevent);
+    print("Let's see");
+  }
+
+
 
 //
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Colors.white, Colors.blue],
-            begin: const FractionalOffset(0.0, 1.0),
-            end: const FractionalOffset(0.0, 1.0),
-            stops: [0.0, 1.0],
-            tileMode: TileMode.repeated,
+      body: BlocConsumer<UserBloc, UserState>(
+        listener: (context, state) {
+          if (state is UserOperationFailure) {
+            Text("Failed");
+          }
+          if (state is UserLoadSuccess) {
+            Navigator.pushNamed(context, CarList.routeName);
+            print("Okay");
+          }
+        },
+        builder: (context, state) {
+          return _loginForm(context);
+        },
+      ),
+    );
+  }
+  Widget _loginForm(context){
+        return Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.white, Colors.blue],
+              begin: const FractionalOffset(0.0, 1.0),
+              end: const FractionalOffset(0.0, 1.0),
+              stops: [0.0, 1.0],
+              tileMode: TileMode.repeated,
+            ),
           ),
-        ),
-        child: Form(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'Rent-A-Ride',
-                style: (TextStyle(
-                  color: Colors.indigo[700],
-                  fontSize: 30,
-                  fontWeight: FontWeight.w600,
-                  letterSpacing: 2,
-                )),
-              ),
-              SizedBox(height: 65.0,),
-              Text(
-                'Great cars for great people.',
-                textAlign: TextAlign.center,
-                style: (TextStyle(
-                  color: Colors.indigo[700],
-                  fontSize: 27,
-                  fontWeight: FontWeight.w500,
-                  letterSpacing: 2,
-                )),
-              ),
-              SizedBox(height: 25.0),
-              usernameTextField(),
-              passwordTextField(),
-              SizedBox(height: 10,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Text(
-                    'Forgot Password?',
-                    style: TextStyle(
-                      color: Colors.blue,
-                      fontSize: 15,
-                      fontWeight: FontWeight.bold,
-                    ),
+          child: Form(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  child: Text(
+                    'Rent-A-Ride',
+                    style: (TextStyle(
+                      color: Colors.indigo[700],
+                      fontSize: 30,
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: 2,
+                    )),
                   ),
-                  SizedBox(width: 25,),
-                  InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushNamed(SignUp.routeName);
-                    },
-                    child: Container(
-                      child: Text(
-                        'New User?',
+                ),
+                SizedBox(height: 65.0,),
+                Text(
+                  'Great cars for great people.',
+                  textAlign: TextAlign.center,
+                  style: (TextStyle(
+                    color: Colors.indigo[700],
+                    fontSize: 27,
+                    fontWeight: FontWeight.w500,
+                    letterSpacing: 2,
+                  )),
+                ),
+                SizedBox(height: 25.0),
+                usernameTextField(),
+                passwordTextField(),
+                SizedBox(height: 10,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Text(
+                      'Forgot Password?',
+                      style: TextStyle(
+                        color: Colors.blue,
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SizedBox(width: 25,),
+                    InkWell(
+                      onTap: () {
+                        Navigator.of(context).pushNamed(SignUp.routeName);
+                      },
+                      child: Container(
+                        child: Text(
+                          'New User?',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 38,),
+                InkWell(
+                  onTap: () {
+                      _login(context);
+                  },
+                  child: Container(
+                    width: 150,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.blue,
+                    ),
+                    child: Center(
+                      child: circular ? CircularProgressIndicator() :
+                      Text(
+                        'Log In',
                         style: TextStyle(
-                          color: Colors.blue,
+                          color: Colors.black,
                           fontSize: 15,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                   ),
-                ],
-              ),
-              SizedBox(height: 38,),
-              InkWell(
-                onTap: () {
-                    context.read<CarBloc>().add(CarLoad());
-                },
-                child: Container(
-                  width: 150,
-                  height: 50,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.blue,
-                  ),
-                  child: Center(
-                    child: circular ? CircularProgressIndicator() :
-                    Text(
-                      'Log In',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      ),
-    );
+        );
   }
 
 

@@ -1,10 +1,10 @@
 import 'dart:convert';
-import 'package:carental/car/models/models.dart';
+import 'package:carental/models/models.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 
 class CarDataProvider {
-  final _baseUrl = "http://10.0.2.2:5000";
+  final _baseUrl = "http://10.2.2.2:5000";
 
 
   Future<CarModel> addCar(CarModel car) async{

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:carental/car/car.dart';
+import 'package:carental/models/models.dart';
+import 'package:carental/repository/repository.dart';
+import 'package:carental/bloc/bloc.dart';
+import 'package:carental/screens/screens.dart';
 
 class AddUpdateCar extends StatefulWidget{
   static const routeName='carAddUpdate';

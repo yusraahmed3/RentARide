@@ -37,6 +37,7 @@ exports.checkUsername = (req, res) => {
 }
 
 exports.logIn = (req, res) => {
+    console.log("Inside login");
     User.findOne({ username: req.body.username }, (err, result) => {
         if (err) res.status(500).json({ msg: err });
         if (result == null) {

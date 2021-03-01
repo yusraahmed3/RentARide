@@ -7,9 +7,13 @@ import 'package:carental/car.dart';
 void main() {
   Bloc.observer = SimpleBlocObserver();
 
+<<<<<<< HEAD
   final UserRepo userRepo = UserRepo(dataProvider: UserDataProvider(
     httpClient: http.Client(),
   ));
+=======
+  final UserRepo userRepo = UserRepo(dataProvider: UserDataProvider());
+>>>>>>> ab8f701ebcd2b2a2dd59c7963b2e6ae205f3bd96
 
   final CarRepository carRepository = CarRepository(
       dataProvider: CarDataProvider()

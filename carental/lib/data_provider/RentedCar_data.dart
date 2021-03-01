@@ -11,7 +11,7 @@ class RentedCarProvider{
 
 
   Future<RentedCarModel>createRentedCar(CarModel car, User user) async{
-    final response = await http.post(formater('/rentcar/createRentedCar'),
+    final response = await http.post(formater('/rentcar/rentACar'),
     headers:<String, String>{
       'content-Type':'application/json; charset=UTF-8',
     },
